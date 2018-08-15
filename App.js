@@ -9,19 +9,13 @@
 import React, { Component } from "react"
 import { Platform, StyleSheet, Text, View } from "react-native"
 import YouTube from "react-native-youtube"
+import { createBottomTabNavigator } from "react-navigation"
 
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
-})
-
-type Props = {}
-export default class App extends Component<Props> {
+class HomeScreen extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Home!</Text>
         <YouTube
           apiKey="API_KEY_HERE"
           videoId="527ZQgRx8W8" // The YouTube video ID
@@ -34,13 +28,48 @@ export default class App extends Component<Props> {
           onError={e => console.warn(e.error)}
           style={{ width: 300, height: 200 }}
         />
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
       </View>
     )
   }
 }
+
+class SettingsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Settings!</Text>
+      </View>
+    )
+  }
+}
+
+export default createBottomTabNavigator({
+  Home: HomeScreen,
+  Settings: SettingsScreen
+})
+
+// type Props = {}
+// export default class App extends Component<Props> {
+//   render() {
+//     return (
+//       <View style={styles.container}>
+//         <YouTube
+//           apiKey="API_KEY_HERE"
+//           videoId="527ZQgRx8W8" // The YouTube video ID
+//           play={true} // control playback of video with true/false
+//           fullscreen={false} // control whether the video should play in fullscreen or inline
+//           loop={true} // control whether the video should loop when ended
+//           onReady={e => this.setState({ isReady: true })}
+//           onChangeState={e => this.setState({ status: e.state })}
+//           onChangeQuality={e => this.setState({ quality: e.quality })}
+//           onError={e => console.warn(e.error)}
+//           style={{ width: 300, height: 200 }}
+//         />
+//         <Text style={styles.welcome}>Welcome to React Native!</Text>
+//       </View>
+//     )
+//   }
+// }
 
 const styles = StyleSheet.create({
   container: {
@@ -53,10 +82,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     margin: 10
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
   }
 })
