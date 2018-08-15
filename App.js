@@ -8,7 +8,7 @@
 
 import React, { Component } from "react"
 import YouTube from "react-native-youtube"
-import { createBottomTabNavigator } from "react-navigation"
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 import { Platform, StyleSheet, Text, View, YellowBox } from "react-native"
 
 class HomeScreen extends React.Component {
@@ -47,7 +47,12 @@ class SettingsScreen extends React.Component {
   }
 }
 
-export default createBottomTabNavigator({
-  Home: HomeScreen,
-  Settings: SettingsScreen
+export default createMaterialBottomTabNavigator({
+  Home: { screen: HomeScreen },
+  Settings: { screen: SettingsScreen }
+}, {
+  initialRouteName: 'Home',
+  activeTintColor: '#f0edf6',
+  inactiveTintColor: '#3e2465',
+  barStyle: { backgroundColor: '#694fad' },
 })
