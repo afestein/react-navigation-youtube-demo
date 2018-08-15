@@ -8,8 +8,8 @@
 
 import React, { Component } from "react"
 import YouTube from "react-native-youtube"
-import { createBottomTabNavigator } from "react-navigation"
-import { Platform, StyleSheet, Text, View, YellowBox } from "react-native"
+import { createStackNavigator } from "react-navigation"
+import { Button, Platform, StyleSheet, Text, View, YellowBox } from "react-native"
 
 class HomeScreen extends React.Component {
   componentWillMount() {
@@ -32,6 +32,10 @@ class HomeScreen extends React.Component {
           onError={e => console.warn(e.error)}
           style={{ width: 300, height: 200 }}
         />
+        <Button
+          title="Go to Settings"
+          onPress={() => this.props.navigation.navigate('Settings')}
+        />
       </View>
     )
   }
@@ -42,12 +46,16 @@ class SettingsScreen extends React.Component {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>Settings!</Text>
+        <Button
+          title="Go back"
+          onPress={() => this.props.navigation.goBack()}
+        />
       </View>
     )
   }
 }
 
-export default createBottomTabNavigator({
+export default createStackNavigator({
   Home: HomeScreen,
   Settings: SettingsScreen
 })
