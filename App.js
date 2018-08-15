@@ -7,11 +7,15 @@
  */
 
 import React, { Component } from "react"
-import { Platform, StyleSheet, Text, View } from "react-native"
+import { Platform, StyleSheet, Text, View, YellowBox } from "react-native"
 import YouTube from "react-native-youtube"
 import { createBottomTabNavigator } from "react-navigation"
 
 class HomeScreen extends React.Component {
+  componentWillMount() {
+    YellowBox.ignoreWarnings(["Warning: isMounted(...) is deprecated"])
+  }
+
   render() {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -22,6 +26,7 @@ class HomeScreen extends React.Component {
           play={true} // control playback of video with true/false
           fullscreen={false} // control whether the video should play in fullscreen or inline
           loop={true} // control whether the video should loop when ended
+          resumePlayAndroid={false}
           onReady={e => this.setState({ isReady: true })}
           onChangeState={e => this.setState({ status: e.state })}
           onChangeQuality={e => this.setState({ quality: e.quality })}
