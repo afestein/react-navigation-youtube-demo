@@ -7,9 +7,9 @@
  */
 
 import React, { Component } from "react"
-import { Platform, StyleSheet, Text, View, YellowBox } from "react-native"
 import YouTube from "react-native-youtube"
 import { createBottomTabNavigator } from "react-navigation"
+import { Platform, StyleSheet, Text, View, YellowBox } from "react-native"
 
 class HomeScreen extends React.Component {
   componentWillMount() {
@@ -19,14 +19,13 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Home!</Text>
         <YouTube
           apiKey="API_KEY_HERE"
           videoId="527ZQgRx8W8" // The YouTube video ID
-          play={true} // control playback of video with true/false
+          play={false} // control playback of video with true/false
           fullscreen={false} // control whether the video should play in fullscreen or inline
           loop={true} // control whether the video should loop when ended
-          resumePlayAndroid={false}
+          resumePlayAndroid={false} // tab switching crashes without this
           onReady={e => this.setState({ isReady: true })}
           onChangeState={e => this.setState({ status: e.state })}
           onChangeQuality={e => this.setState({ quality: e.quality })}
@@ -51,41 +50,4 @@ class SettingsScreen extends React.Component {
 export default createBottomTabNavigator({
   Home: HomeScreen,
   Settings: SettingsScreen
-})
-
-// type Props = {}
-// export default class App extends Component<Props> {
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <YouTube
-//           apiKey="API_KEY_HERE"
-//           videoId="527ZQgRx8W8" // The YouTube video ID
-//           play={true} // control playback of video with true/false
-//           fullscreen={false} // control whether the video should play in fullscreen or inline
-//           loop={true} // control whether the video should loop when ended
-//           onReady={e => this.setState({ isReady: true })}
-//           onChangeState={e => this.setState({ status: e.state })}
-//           onChangeQuality={e => this.setState({ quality: e.quality })}
-//           onError={e => console.warn(e.error)}
-//           style={{ width: 300, height: 200 }}
-//         />
-//         <Text style={styles.welcome}>Welcome to React Native!</Text>
-//       </View>
-//     )
-//   }
-// }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
-  }
 })
