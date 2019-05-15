@@ -6,14 +6,14 @@
  * @flow
  */
 
-import React, { Component } from "react"
-import YouTube from "react-native-youtube"
-import { createBottomTabNavigator } from "react-navigation"
-import { Platform, StyleSheet, Text, View, YellowBox } from "react-native"
+import React, { Component } from "react";
+import YouTube from "react-native-youtube";
+import { createBottomTabNavigator } from "react-navigation";
+import { Platform, StyleSheet, Text, View, YellowBox } from "react-native";
 
 class HomeScreen extends React.Component {
   componentWillMount() {
-    YellowBox.ignoreWarnings(["Warning: isMounted(...) is deprecated"])
+    YellowBox.ignoreWarnings(["Warning: isMounted(...) is deprecated"]);
   }
 
   render() {
@@ -22,7 +22,7 @@ class HomeScreen extends React.Component {
         <YouTube
           apiKey="API_KEY_HERE"
           videoId="527ZQgRx8W8" // The YouTube video ID
-          play={false} // control playback of video with true/false
+          play={true} // control playback of video with true/false
           fullscreen={false} // control whether the video should play in fullscreen or inline
           loop={true} // control whether the video should loop when ended
           resumePlayAndroid={false} // tab switching crashes without this
@@ -33,7 +33,7 @@ class HomeScreen extends React.Component {
           style={{ width: 300, height: 200 }}
         />
       </View>
-    )
+    );
   }
 }
 
@@ -43,11 +43,11 @@ class SettingsScreen extends React.Component {
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>Settings!</Text>
       </View>
-    )
+    );
   }
 }
 
 export default createBottomTabNavigator({
   Home: HomeScreen,
   Settings: SettingsScreen
-})
+});
