@@ -6,10 +6,10 @@
  * @flow
  */
 
-import React, { Component } from "react";
+import React from "react";
 import YouTube from "react-native-youtube";
 import { createBottomTabNavigator } from "react-navigation";
-import { Platform, StyleSheet, Text, View, YellowBox } from "react-native";
+import { Text, View, YellowBox } from "react-native";
 
 class HomeScreen extends React.Component {
   componentWillMount() {
